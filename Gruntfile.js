@@ -117,13 +117,13 @@ module.exports = function (grunt) {
         concat: {
             main: {
                 src: ['<%= dom_munger.data.appjs %>'],
-                dest: 'dist/launchpadAPI.js'
+                dest: 'dist/testAPI.js'
             }
         },
         uglify: {
             main: {
-                src: 'dist/launchpadAPI.js',
-                dest: 'dist/launchpadAPI.min.js'
+                src: 'dist/testAPI.js',
+                dest: 'dist/testAPI.min.js'
             }
         },
         htmlmin: {
@@ -181,8 +181,8 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('build', ['jshint', 'clean:before', 'dom_munger', 'karma:all_tests', 'concat', 'uglify', 'clean:after']);
-    grunt.registerTask('serve', ['dom_munger:read', 'jshint', 'connect', 'watch']);
+    grunt.registerTask('build', ['clean:before', 'dom_munger', 'karma:all_tests', 'concat', 'uglify', 'clean:after']);
+    grunt.registerTask('serve', ['dom_munger:read', 'connect', 'watch']);
     grunt.registerTask('test', ['dom_munger:read', 'jshint', 'karma:all_tests']);
     grunt.registerTask('rename-npm-config', function (name) {
         var npmConfigPath = 'package.json';
